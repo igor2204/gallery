@@ -23,17 +23,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
-                checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) !=
-                        PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1000);
+        if (checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                requestPermissions(new String[]{Manifest.permission.READ_MEDIA_IMAGES}, 1000);
+            }
         } else {
             showImages();
         }
     }
     private void showImages() {
         //папка со всеми изображениями
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/images/";
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/DCIM/Camera/";
         allFilesPaths = new ArrayList<>();
         allFilesPaths = listAllFiles(path);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.gallery);
