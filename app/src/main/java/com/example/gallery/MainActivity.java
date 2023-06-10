@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void showImages() {
         //папка со всеми изображениями
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Pictures/Screenshots/";
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/images/";
         allFilesPaths = new ArrayList<>();
         allFilesPaths = listAllFiles(path);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.gallery);
